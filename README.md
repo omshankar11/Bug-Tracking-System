@@ -1,124 +1,142 @@
-# Bug Tracking System
+# 🐛 Bug Tracking System
 
-A comprehensive bug tracking application built with Spring Boot, Thymeleaf, MySQL, and Spring Security.
+A robust full-stack bug tracking and project management platform built utilizing the Java Spring ecosystem, Thymeleaf rendering engine, and MySQL relational database. Equipped with role-based access controls (RBAC) to securely isolate administrative operations and streamline developer tracking workflows.
 
-## Features
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.0-brightgreen)
+![Java](https://img.shields.io/badge/Java-17-orange)
+![Spring Security](https://img.shields.io/badge/Spring%20Security-6.x-blue)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-blueviolet)
 
-- **User Management**: User registration and authentication
-- **Bug Tracking**: Create, update, and manage bug reports
-- **Project Management**: Organize bugs by projects (Admin only)
-- **Search & Filter**: Find bugs by various criteria
-- **Comments**: Add comments to bug reports
-- **Role-based Access**: Admin and User roles with different permissions
+---
 
-## Technology Stack
+## 🌟 Core Features
 
-- **Backend**: Spring Boot 3.2.0, Java 17
-- **Frontend**: Thymeleaf templates
-- **Database**: MySQL 8.0 (Production) / H2 (Development)
-- **Security**: Spring Security with BCrypt password encoding
-- **ORM**: Hibernate/JPA
-- **Build Tool**: Maven
+* **User Management:** Secure custom user registration and form-based session authentication pipelines.
+* **Bug Lifecycle Tracking:** Full CRUD workflows for creating, updating, and tracking bug reports with statuses (`OPEN`, `RESOLVED`, `CLOSED`) and severities (`LOW`, `MEDIUM`, `HIGH`).
+* **Project Management:** Administrative system grouping to easily organize bugs by separate parent projects (Restricted to Admins).
+* **Interactive Comments:** Collaborative comment stream attached to individual bug sheets for deep team debugging.
+* **Search & Filter:** Fast query interfaces to sort out open bug entities by dynamic user-specified conditions.
+* **Role-Based Access Control (RBAC):** Strict security filters isolating administrative interfaces (`/admin/**`) from base user profiles.
 
-## Prerequisites
+---
 
-- Java 17 or higher
-- Maven 3.6+
-- MySQL 8.0 (for production) or H2 (for development)
+## 💻 Technology Stack
 
-## Quick Start
+* **Backend Framework:** Spring Boot 3.2.0, Java 17
+* **Frontend View Engine:** Thymeleaf Template layouts
+* **Database Management Engine:** MySQL 8.0 (Production) / H2 Engine (Development)
+* **Security Layer:** Spring Security with cryptographic BCrypt password hashing
+* **Object-Relational Mapping (ORM):** Hibernate / JPA Data streams
+* **Project Build System:** Apache Maven Wrapper Framework
 
-### Development (H2 Database)
+---
 
-1. Clone the repository
-2. Navigate to the backend directory:
-   ```bash
-   cd backend
-   ```
-3. Run with development profile:
-   ```bash
-   ./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
-   ```
-4. Access the application at http://localhost:8080
+## 📁 Project Directory Framework
 
-### Production (MySQL Database)
-
-1. Set up MySQL database and user (see README-DB.md)
-2. Update `src/main/resources/application.properties` with your database credentials
-3. Run the application:
-   ```bash
-   ./mvnw spring-boot:run
-   ```
-
-## Database Setup
-
-See [README-DB.md](backend/README-DB.md) for detailed MySQL setup instructions.
-
-## Configuration
-
-The application uses different profiles:
-
-- `dev`: Uses H2 in-memory database (default for development)
-- `default`: Uses MySQL database (production)
-
-## Testing
-
-Run tests with:
-```bash
-./mvnw test
-```
-
-## Project Structure
-
-```
+```text
 backend/
-├── .mvn/                        # Maven wrapper files
-├── mvnw
-├── mvnw.cmd
-├── pom.xml                      # Maven build file
-├── README-DB.md                 # MySQL setup instructions
+├── .mvn/                        # Maven wrapper execution files
+├── mvnw                         # Maven wrapper script for Linux/macOS
+├── mvnw.cmd                     # Maven wrapper script for Windows PowerShell
+├── pom.xml                      # Core project dependencies configuration file
 ├── src/
 │   ├── main/
 │   │   ├── java/com/example/bugtracker/
-│   │   │   ├── controller/      # Web controllers
-│   │   │   ├── model/           # JPA entities
-│   │   │   ├── repository/      # Spring Data repositories
-│   │   │   ├── service/         # Business logic
-│   │   │   └── config/          # Security configuration
+│   │   │   ├── config/      # Spring Security configurations (.hasAuthority mappings)
+│   │   │   ├── controller/  # UI Routing controllers and request path parameters
+│   │   │   ├── model/       # Relational JPA entity mappings and enums
+│   │   │   ├── repository/  # CrudRepository interface data object layers
+│   │   │   └── service/     # Unified business logic services (UserDetailsService)
 │   │   └── resources/
-│   │       ├── templates/       # Thymeleaf templates
-│   │       ├── static/          # CSS, JS, images
-│   │       ├── application.properties
-│   │       └── application-dev.properties
+│   │       ├── static/      # Static UI assets (CSS stylesheets, JS files, custom images)
+│   │       ├── templates/   # Thymeleaf web page layouts (.html files)
+│   │       ├── application.properties     # Production database configurations
+│   │       └── application-dev.properties # Development H2 profile environment details
 │   └── test/
 │       └── java/com/example/bugtracker/
 │           └── BugtrackerApplicationTests.java
-``` 
 
-## Security
 
-- Form-based authentication
-- Password encryption with BCrypt
-- Role-based authorization (USER, ADMIN)
-- CSRF protection enabled
 
-## API Endpoints
+🚀 Local Implementation Guide
+Prerequisites
+Java Development Kit (JDK): Version 17 or higher configured locally.
 
-- `GET /` - Home page (redirects to login if not authenticated)
-- `GET /login` - Login page
-- `GET /register` - User registration
-- `GET /bugs` - Bug dashboard
-- `GET /admin/projects` - Project management (Admin only)
-- `GET /admin/users` - User management (Admin only)
+Apache Maven: Version 3.6+ (or use the included project script files directly).
 
-## Contributing
+Database Management System: Active MySQL server instance.
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Run tests
-5. Submit a pull request
+📦 Option A: Quick Development (In-Memory H2 Database)
+If you just want to run the codebase quickly without setting up an external database, you can use the localized development profile layout:
 
-## License
+Open your terminal inside the root directory and navigate to the backend module:
 
-This project is for educational purposes.
+Bash
+cd backend
+Build and boot up the system container target pointing to the dev profile:
+
+Bash
+./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
+Load the interactive interface view inside your browser:
+👉 http://localhost:8080
+
+🗄️ Option B: Production Mode (Local MySQL Setup)
+To track system modifications persistently inside your live relational schemas:
+
+1. Setup Your Schema Instance
+Open your MySQL Workbench instance or terminal shell, and run the schema setup instruction:
+
+SQL
+CREATE DATABASE bugtracker_db;
+⚠️ Important Security System Initialization: Because the application reads role lists out of an isolated join table, if you want to elevate a default account to access the administrative dashboards, map the primary ID to the target join record:
+
+SQL
+INSERT INTO user_roles (user_id, role) VALUES (7, 'ADMIN');
+2. Synchronize Your Credentials Properties
+Open your local src/main/resources/application.properties configuration file, and confirm that your server credentials match your database context:
+
+Properties
+spring.datasource.url=jdbc:mysql://localhost:3306/bugtracker_db
+spring.datasource.username=YOUR_MYSQL_USERNAME
+spring.datasource.password=YOUR_MYSQL_PASSWORD
+spring.jpa.hibernate.ddl-auto=update
+3. Compile and Run the Server
+Execute the default Maven runtime wrapper statement from your VS Code terminal window:
+
+PowerShell
+.\mvnw clean spring-boot:run
+Once your console logs display that the Tomcat engine has initialized on port 8080, head right to your browser gate at: http://localhost:8080/login
+
+🔒 Verified Security Endpoints Reference
+GET /login & GET /register ➡️ Public Channels (Accessible by everyone)
+
+GET /bugs/ & POST /bugs/ ➡️ Authenticated Channels (Requires active login context)
+
+GET /admin/projects ➡️ Restricted View (Requires verified ADMIN Authority)
+
+GET /admin/users ➡️ Restricted View (Requires verified ADMIN Authority)
+
+📝 Unit Testing
+Verify your application controllers, database repositories, and access handling configurations by invoking the Maven test engine:
+
+PowerShell
+.\mvnw test
+📄 License
+This system framework has been constructed exclusively for educational portfolio demonstration and training purposes. All code layers are subject to open modification.
+
+
+---
+
+### 🕹️ Terminal Command Checklist
+
+To commit this file safely to your GitHub repository from your terminal, execute these final commands inside VS Code:
+
+```powershell
+# 1. Stage the updated markdown documentation file
+git add README.md
+
+# 2. Save the documentation snapshot commit 
+git commit -m "docs: finalize structural full-stack architectural overview in README"
+
+# 3. Publish it live to your public repository branch
+git push origin main
