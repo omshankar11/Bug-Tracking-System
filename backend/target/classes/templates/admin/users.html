@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Users | Bug Tracking System</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<header>
+    <h1>Bug Tracking System</h1>
+    <nav>
+        <a th:href="@{/bugs}">Bugs</a>
+        <a th:href="@{/bugs/new}">Create Bug</a>
+        <a th:href="@{/admin/projects}">Projects</a>
+        <a th:href="@{/admin/users}">Users</a>
+        <a th:href="@{/logout}">Logout</a>
+    </nav>
+</header>
+<section class="main-content">
+    <h2>User Management</h2>
+    <a class="button" th:href="@{/admin/users/new}">New User</a>
+    <table>
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Roles</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.roles}"></td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+</body>
+</html>

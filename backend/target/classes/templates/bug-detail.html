@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Bug Detail | Bug Tracking System</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<header>
+    <h1>Bug Tracking System</h1>
+    <nav>
+        <a th:href="@{/bugs}">Bugs</a>
+        <a th:href="@{/bugs/new}">Create Bug</a>
+        <a th:href="@{/admin/projects}">Projects</a>
+        <a th:href="@{/admin/users}">Users</a>
+        <a th:href="@{/logout}">Logout</a>
+    </nav>
+</header>
+<section class="main-content">
+    <h2 th:text="${bug.title}"></h2>
+    <p><strong>Status:</strong> <span th:text="${bug.status}"></span></p>
+    <p><strong>Severity:</strong> <span th:text="${bug.severity}"></span></p>
+    <p><strong>Project:</strong> <span th:text="${bug.project != null ? bug.project.name : 'None'}"></span></p>
+    <p><strong>Assigned To:</strong> <span th:text="${bug.assignedTo != null ? bug.assignedTo.username : 'Unassigned'}"></span></p>
+    <p><strong>Created By:</strong> <span th:text="${bug.createdBy != null ? bug.createdBy.username : 'Unknown'}"></span></p>
+    <p><strong>Description:</strong></p>
+    <p th:text="${bug.description}"></p>
+
+    <h3>Comments</h3>
+    <div th:if="${#lists.isEmpty(bug.comments)}">No comments yet.</div>
+    <ul>
+        <li th:each="comment : ${bug.comments}">
+            <strong th:text="${comment.author != null ? comment.author.username : 'Anonymous'}"></strong>
+            <span th:text="${comment.postedAt}"></span>
+            <p th:text="${comment.text}"></p>
+        </li>
+    </ul>
+
+    <h3>Add Comment</h3>
+    <form th:action="@{|/bugs/${bug.id}/comments|}" th:object="${comment}" method="post">
+        <textarea th:field="*{text}" required></textarea>
+        <div class="error" th:if="${#fields.hasErrors('text')}" th:errors="*{text}"></div>
+        <button type="submit">Post Comment</button>
+    </form>
+</section>
+</body>
+</html>

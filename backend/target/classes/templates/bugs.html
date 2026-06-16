@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Bug Dashboard | Bug Tracking System</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<header>
+    <h1>Bug Tracking System</h1>
+    <nav>
+        <a th:href="@{/bugs}">Bugs</a>
+        <a th:href="@{/bugs/new}">Create Bug</a>
+        <a th:href="@{/admin/projects}">Projects</a>
+        <a th:href="@{/admin/users}">Users</a>
+        <a th:href="@{/logout}">Logout</a>
+    </nav>
+</header>
+<section class="main-content">
+    <h2>Bug Dashboard</h2>
+    <a class="button" th:href="@{/bugs/new}">New Bug</a>
+    <table>
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Severity</th>
+            <th>Project</th>
+            <th>Assigned To</th>
+            <th>Created By</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="bug : ${bugs}">
+            <td><a th:href="@{|/bugs/${bug.id}|}" th:text="${bug.title}"></a></td>
+            <td th:text="${bug.status}"></td>
+            <td th:text="${bug.severity}"></td>
+            <td th:text="${bug.project != null ? bug.project.name : 'None'}"></td>
+            <td th:text="${bug.assignedTo != null ? bug.assignedTo.username : 'Unassigned'}"></td>
+            <td th:text="${bug.createdBy != null ? bug.createdBy.username : 'Unknown'}"></td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Projects | Bug Tracking System</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<header>
+    <h1>Bug Tracking System</h1>
+    <nav>
+        <a th:href="@{/bugs}">Bugs</a>
+        <a th:href="@{/bugs/new}">Create Bug</a>
+        <a th:href="@{/admin/projects}">Projects</a>
+        <a th:href="@{/admin/users}">Users</a>
+        <a th:href="@{/logout}">Logout</a>
+    </nav>
+</header>
+<section class="main-content">
+    <h2>Project Management</h2>
+    <a class="button" th:href="@{/admin/projects/new}">New Project</a>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="project : ${projects}">
+            <td th:text="${project.name}"></td>
+            <td th:text="${project.description}"></td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Create Bug | Bug Tracking System</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<header>
+    <h1>Bug Tracking System</h1>
+    <nav>
+        <a th:href="@{/bugs}">Bugs</a>
+        <a th:href="@{/admin/projects}">Projects</a>
+        <a th:href="@{/admin/users}">Users</a>
+        <a th:href="@{/logout}">Logout</a>
+    </nav>
+</header>
+<section class="main-content">
+    <h2>Create Bug</h2>
+    <form th:action="@{/bugs}" th:object="${bug}" method="post">
+        <label for="title">Title</label>
+        <input id="title" th:field="*{title}" type="text" required />
+        <div class="error" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+
+        <label for="description">Description</label>
+        <textarea id="description" th:field="*{description}" required></textarea>
+        <div class="error" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
+
+        <label for="status">Status</label>
+        <select id="status" th:field="*{status}">
+            <option th:each="status : ${T(com.example.bugtracker.model.Status).values()}" th:value="${status}" th:text="${status}"></option>
+        </select>
+
+        <label for="severity">Severity</label>
+        <select id="severity" th:field="*{severity}">
+            <option th:each="severity : ${T(com.example.bugtracker.model.Severity).values()}" th:value="${severity}" th:text="${severity}"></option>
+        </select>
+
+        <label for="project">Project</label>
+        <select id="project" name="projectId">
+            <option value="" th:text="'None'"></option>
+            <option th:each="project : ${projects}" th:value="${project.id}" th:text="${project.name}"></option>
+        </select>
+
+        <label for="assignedTo">Assign To</label>
+        <select id="assignedTo" name="assignedToId">
+            <option value="" th:text="'Unassigned'"></option>
+            <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.username}"></option>
+        </select>
+
+        <button type="submit">Create</button>
+    </form>
+</section>
+</body>
+</html>

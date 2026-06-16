@@ -1,0 +1,16 @@
+com\example\bugtracker\repository\CommentRepository.class
+com\example\bugtracker\model\Status.class
+com\example\bugtracker\model\Bug.class
+com\example\bugtracker\model\User.class
+com\example\bugtracker\repository\UserRepository.class
+com\example\bugtracker\model\Severity.class
+com\example\bugtracker\service\UserDetailsServiceImpl.class
+com\example\bugtracker\BugtrackerApplication.class
+com\example\bugtracker\controller\BugController.class
+com\example\bugtracker\repository\ProjectRepository.class
+com\example\bugtracker\config\SecurityConfig.class
+com\example\bugtracker\service\BugService.class
+com\example\bugtracker\repository\BugRepository.class
+com\example\bugtracker\model\Role.class
+com\example\bugtracker\model\Project.class
+com\example\bugtracker\model\Comment.class

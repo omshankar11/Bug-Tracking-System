@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>New Project | Bug Tracking System</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<header>
+    <h1>Bug Tracking System</h1>
+    <nav>
+        <a th:href="@{/bugs}">Bugs</a>
+        <a th:href="@{/bugs/new}">Create Bug</a>
+        <a th:href="@{/admin/projects}">Projects</a>
+        <a th:href="@{/admin/users}">Users</a>
+        <a th:href="@{/logout}">Logout</a>
+    </nav>
+</header>
+<section class="main-content">
+    <h2>Create Project</h2>
+    <form th:action="@{/admin/projects}" th:object="${project}" method="post">
+        <label for="name">Project Name</label>
+        <input id="name" th:field="*{name}" type="text" required />
+        <div class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+
+        <label for="description">Description</label>
+        <textarea id="description" th:field="*{description}"></textarea>
+
+        <button type="submit">Save Project</button>
+    </form>
+</section>
+</body>
+</html>
