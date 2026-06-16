@@ -6,6 +6,28 @@ A robust full-stack bug tracking and project management platform built utilizing
 ![Java](https://img.shields.io/badge/Java-17-orange)
 ![Spring Security](https://img.shields.io/badge/Spring%20Security-6.x-blue)
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-blueviolet)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+
+---
+
+## 📸 Application Interface Preview
+
+### 🔐 Login Gateway
+<img src="assets/login.jpeg" alt="Login Screen" width="100%"/>
+
+### 📊 Main Bug Management Dashboard
+<img src="assets/dashboard.jpeg" alt="Dashboard" width="100%"/>
+
+### 👥 Administrative User Grid View
+<img src="assets/user-management.jpeg" alt="User Management" width="100%"/>
+
+### 📁 Project Tracks Management View
+<img src="assets/project-management.jpeg" alt="Project Management" width="100%"/>
+
+### 📝 Dynamic Ticket Creation Panel
+<img src="assets/create-bug.jpeg" alt="Create Bug Ticket" width="100%"/>
+
+---
 
 ---
 
@@ -55,8 +77,6 @@ backend/
 │   └── test/
 │       └── java/com/example/bugtracker/
 │           └── BugtrackerApplicationTests.java
-
-
 
 🚀 Local Implementation Guide
 Prerequisites
@@ -122,21 +142,4 @@ Verify your application controllers, database repositories, and access handling 
 PowerShell
 .\mvnw test
 📄 License
-This system framework has been constructed exclusively for educational portfolio demonstration and training purposes. All code layers are subject to open modification.
-
-
----
-
-### 🕹️ Terminal Command Checklist
-
-To commit this file safely to your GitHub repository from your terminal, execute these final commands inside VS Code:
-
-```powershell
-# 1. Stage the updated markdown documentation file
-git add README.md
-
-# 2. Save the documentation snapshot commit 
-git commit -m "docs: finalize structural full-stack architectural overview in README"
-
-# 3. Publish it live to your public repository branch
-git push origin main
+Distributed under the MIT License. See LICENSE for more information.
